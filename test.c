@@ -73,7 +73,17 @@ void Sewa(){
 
        printf("\nApakah data tersebut sudah benar ?[y/t] > ");scanf("%c",&pilih);
        if(pilih == 'y' || pilih == 'Y'){
-              printf("Terima Kasih\n");
+              file=fopen("nama.txt","a");
+              fprintf(file,"%s\n",data_diri.nama);
+              fclose(file);
+
+              file=fopen("ID.txt","a");
+              fprintf(file,"%s\n",data_diri.ID);
+              fclose(file);
+
+              file=fopen("alamat.txt","a");
+              fprintf(file,"%s\n",data_diri.alamat);
+              fclose(file);
        }
        else{
               Sewa();
