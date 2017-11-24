@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 
-struct{
+struct data_diri{
        char nama[30];
        char ID[20];
        char alamat[50];
@@ -13,9 +13,11 @@ struct{
 }data_diri;
 
 FILE *file;
+struct data_diri arrpenyewaan[50];
 
 void menu();
 void Sewa();
+void log_Sewa();
 void judul();
 void loading();
 
@@ -34,7 +36,8 @@ void menu(){
               judul();
               printf("Pilih Menu : \n");
               printf("1. Sewa baru\n");
-              printf("2. Keluar\n");
+              printf("2. Log Penyewaan\n");
+              printf("3. Keluar\n");
               printf("Pilih > ");scanf("%d",&menu);
               switch(menu){
                      case 1 :{
@@ -45,6 +48,14 @@ void menu(){
                             break;
                      }
                      case 2 :{
+                            getchar();
+                            log_Sewa();
+                            //getchar();
+                            printf("Kembali ke menu ?[y/t] > ");scanf("%c",&again);
+                            loading();
+                            break;
+                     }
+                     case 3 :{
                             getchar();
                             again='t';
                             loading();
@@ -90,6 +101,46 @@ void Sewa(){
        }
 }
 
+void log_Sewa(){
+       system("clear");
+       file=fopen("nama.txt","r");
+       int i=0;
+       while(fgets(arrpenyewaan[i].nama, 20, file)){
+             arrpenyewaan[i].nama[strlen(arrpenyewaan[i].nama) -1 ]='\0' ;
+              i++;
+       }
+       fclose(file);
+       file=fopen("ID.txt","r");
+       i=0;
+       while(fgets(arrpenyewaan[i].ID, 20, file)){
+             arrpenyewaan[i].ID[strlen(arrpenyewaan[i].ID) -1 ]='\0' ;
+              i++;
+       }
+       fclose(file);
+       file=fopen("alamat.txt","r");
+       i=0;
+       while(fgets(arrpenyewaan[i].alamat, 20, file)){
+             arrpenyewaan[i].alamat[strlen(arrpenyewaan[i].alamat) -1]='\0' ;
+              i++;
+       }
+       fclose(file);
+       printf("+---+---------------------+------------------+--------------------------+\n");
+       printf("| No|\t     Nama Penyewa |        ID        |          Alamat          |\n");
+       printf("+---+---------------------+------------------+--------------------------+\n");
+       for(int j=0;j<i;j++){
+              printf("|%3d|%21s|%18s|%26s|",j+1,arrpenyewaan[j].nama,arrpenyewaan[j].ID,arrpenyewaan[j].alamat);
+              /*printf("|%3d|",j+1);
+              printf("%21s|",arrpenyewaan[j].nama);
+              fflush(stdout);
+              printf("%20s|",arrpenyewaan[j].ID);
+              fflush(stdout);
+              printf("%20s|",arrpenyewaan[j].alamat);
+              fflush(stdout);*/
+              printf("\n");
+       }
+
+}
+
 void judul(){
        printf("\t\t\t   ========================");
        printf("\n\t\t\t   ||PROGRAM RENTAL MOTOR||");
@@ -97,5 +148,5 @@ void judul(){
 }
 
 void loading(){
-       sleep(2);
+       //sleep(2);
 }
