@@ -1,70 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-
-typedef struct{
-       char nama[30];
-       char ID[20];
-       char alamat[50];
-       char motor[30];
-       char tanggal_sewa[20];
-       char tanggal_kembali[20];
-}data_diri;
-
-FILE *file;
-data_diri arrpenyewaan[50];
-
-void menu();
-void Sewa();
-void log_Sewa();
-void judul();
-void loading();
-
-int main(){
-       menu();
-       printf("Terima Kasih\n");
-       return 0;
-}
-
-void menu(){
-       int menu;
-       char again;
-       system("clear");
-       do{
-              system("clear");
-              judul();
-              printf("Pilih Menu : \n");
-              printf("1. Sewa baru\n");
-              printf("2. Log Penyewaan\n");
-              printf("3. Keluar\n");
-              printf("Pilih > ");scanf("%d",&menu);
-              switch(menu){
-                     case 1 :{
-                            Sewa();
-                            getchar();
-                            printf("Kembali ke menu ?[y/t] > ");scanf("%c",&again);
-                            loading();
-                            break;
-                     }
-                     case 2 :{
-                            getchar();
-                            log_Sewa();
-                            //getchar();
-                            printf("Kembali ke menu ?[y/t] > ");scanf("%c",&again);
-                            loading();
-                            break;
-                     }
-                     case 3 :{
-                            getchar();
-                            again='t';
-                            loading();
-                            break;
-                     }
-              }
-       }while(again == 'y' || again == 'Y');
-
-}
+#include "fungsi.h"
+#include "menu.h"
 
 void Sewa(){
        char pilih;
@@ -140,15 +78,5 @@ void log_Sewa(){
               printf("\n");
        }
        printf("+---+---------------------+------------------+--------------------------+\n\n");
-
 }
 
-void judul(){
-       printf("\t\t\t   ========================");
-       printf("\n\t\t\t   ||PROGRAM RENTAL MOTOR||");
-       printf("\n\t\t\t   ========================\n\n");
-}
-
-void loading(){
-       //sleep(2);
-}
