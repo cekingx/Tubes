@@ -9,7 +9,7 @@ void penyewaan(){
        system("clear");
        do{
               system("clear");
-              //judul();
+              //judul "Menu Penyewaan"
               printf("Menu (Penyewaan) : \n");
               printf("1. Sewa baru\n");
               printf("2. Log Penyewaan\n");
@@ -55,7 +55,7 @@ void db_motor(){
        system("clear");
        do{
               system("clear");
-              //judul();
+              //judul "Database Sepeda Motor"
               printf("Menu ( Database Sepeda Motor ) : \n");
               printf("1. Edit Motor\n");
               printf("2. Hapus Motor\n");
