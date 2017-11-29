@@ -309,17 +309,17 @@ void tambah_motor(){
        system("clear");
        //judul "Tambah Motor"
 
-       printf("\n\nTambah Sepeda Motor : ");
-       printf("Nama Sepeda Motor > ");scanf("%s",temp.nama);
-       printf("Plat Kendaraan    > ");scanf("%s",temp.plat);
-       printf("Kapasitas Mesin   > ");scanf("%s",temp.cc);
-       printf("Tahun Produksi    > ");scanf("%s",temp.tahun);
+       printf("\nTambah Sepeda Motor : \n\n");
+       printf(" Nama Sepeda Motor > ");scanf("%s",temp.nama);
+       printf(" Plat Kendaraan    > ");scanf("%s",temp.plat);
+       printf(" Kapasitas Mesin   > ");scanf("%s",temp.cc);
+       printf(" Tahun Produksi    > ");scanf("%s",temp.tahun);
 
        printf("\n\nReview Data Sepeda Motor :\n\n");
-       printf("Nama Sepeda Motor : %s\n",temp.nama);
-       printf("Plat Kendaraan    : %s\n",temp.plat);
-       printf("Kapasitas Mesin   : %s\n",temp.cc);
-       printf("Tahun Produksi    : %s\n",temp.tahun);
+       printf(" Nama Sepeda Motor : %s\n",temp.nama);
+       printf(" Plat Kendaraan    : %s\n",temp.plat);
+       printf(" Kapasitas Mesin   : %s\n",temp.cc);
+       printf(" Tahun Produksi    : %s\n",temp.tahun);
        getchar();
 
        printf("\nApakah data tersebut sudah benar ?[y/t] > ");scanf("%c",&pilih);
