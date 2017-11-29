@@ -85,7 +85,7 @@ void tb_motor(){
        file=fopen("nama_motor.txt","r");
        while(fgets(arrmotor[i].nama,20,file)){
               arrmotor[i].nama[strlen(arrmotor[i].nama) -1 ] = '\0';
-              i++
+              i++;
        }
        fclose(file);
 
@@ -93,7 +93,7 @@ void tb_motor(){
        file=fopen("plat_motor.txt","r");
        while(fgets(arrmotor[i].plat,15,file)){
               arrmotor[i].plat[strlen(arrmotor[i].plat) -1 ] = '\0';
-              i++
+              i++;
        }
        fclose(file);
 
@@ -101,7 +101,7 @@ void tb_motor(){
        file=fopen("cc_motor.txt","r");
        while(fgets(arrmotor[i].cc,5,file)){
               arrmotor[i].cc[strlen(arrmotor[i].cc) -1 ] = '\0';
-              i++
+              i++;
        }
        fclose(file);
 
@@ -109,7 +109,7 @@ void tb_motor(){
        file=fopen("tahun_motor.txt","r");
        while(fgets(arrmotor[i].tahun,5,file)){
               arrmotor[i].tahun[strlen(arrmotor[i].tahun) -1 ] = '\0';
-              i++
+              i++;
        }
        fclose(file);
 
