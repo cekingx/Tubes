@@ -72,7 +72,7 @@ void tb_bebas(){
        printf("| No|          Data        |\n");
        printf("+---+----------------------+\n");
        for(int j=0;j<i;j++){
-              printf("|%3d| %20s |",j+1,bebas[i].input);
+              printf("|%3d| %20s |",j+1,bebas[j].input);
               printf("\n");
        }
        printf("+---+----------------------+\n");
