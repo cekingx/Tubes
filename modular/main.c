@@ -3,6 +3,8 @@
 #include "menu.h"
 #include "fungsi.h"
 
+void menu();
+
 int main(){
        menu();
        printf("Terima Kasih\n");
@@ -27,25 +29,25 @@ void menu(){
               switch(menu){
                      case 1 :{
                             penyewaan(); //menu.c
-                            getchar();
+                            //getchar();
                             printf("Kembali ke menu utama? [y/t] > ");scanf("%c",&again);
                             break;
                      }
                      case 2 :{
                             tambah_motor(); //fungsi.c
-                            getchar()
+                            //getchar();
                             printf("Kembali ke menu utama? [y/t] > ");scanf("%c",&again);
                             break;
                      }
                      case 3 :{
                             db_motor(); //menu.c
-                            getchar();
+                            //getchar();
                             printf("Kembali ke menu utama? [y/t] > ");scanf("%c",&again);
                             break;
                      }
                      case 4 :{
-                            ganti_harga(); //fungsi.c
-                            getchar();
+                            //ganti_harga(); //fungsi.c
+                            //getchar();
                             printf("Kembali ke menu utama? [y/t] > ");scanf("%c",&again);
                             break;
                      }

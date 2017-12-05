@@ -15,11 +15,12 @@ typedef struct{
 }motor;
 
 typedef struct{
-       char nama[30];
+       char nama[20];
        char ID[20];
-       char alamat[50];
+       char alamat[20];
        motor motor;
        int lama_sewa;
+       int biaya;
        tanggal tgl_sewa;
        tanggal tgl_kembali;
 }data_diri;
@@ -31,13 +32,13 @@ data_diri arrpenyewaan[50];
 motor arrmotor[50];
 
 void tambah_motor();
-void ganti_harga();
+//void ganti_harga();
 void Sewa();
 void log_Sewa();
-void pengembalian();
+//void pengembalian();
 void tb_motor();
-void edit_motor();
-void hapus_motor();
+//void edit_motor();
+//void hapus_motor();
 int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali);
 
 #endif

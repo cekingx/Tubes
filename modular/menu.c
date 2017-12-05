@@ -34,7 +34,7 @@ void penyewaan(){
                      }
                      case 3 :{
                             getchar();
-                            pengembalian();// fungsi.c
+                            //pengembalian();// fungsi.c
                             printf("Kembali ke menu penyewaan?[y/t] > ");scanf("%c",&again);
                             //loading();
                             break;
@@ -64,14 +64,14 @@ void db_motor(){
               printf("Pilih > ");scanf("%d",&menu);
               switch(menu){
                      case 1 :{
-                            edit_motor(); //fungsi.c
+                            //edit_motor(); //fungsi.c
                             getchar();
                             printf("Kembali ke menu Database Sepeda Motor?[y/t] > ");scanf("%c",&again);
                             //loading();
                             break;
                      }
                      case 2 :{
-                            hapus_motor(); //fungsi.c
+                            //hapus_motor(); //fungsi.c
                             printf("Kembali ke menu Database Sepeda Motor?[y/t] > ");scanf("%c",&again);
                             //loading();
                             break;
