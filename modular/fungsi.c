@@ -255,19 +255,23 @@ void tambah_motor(){
 
        printf("\nApakah data tersebut sudah benar ?[y/t] > ");scanf("%c",&pilih);
        if(pilih == 'y' || pilih == 'Y'){
-              file=fopen("nama_motor.txt","a");
+              if((file=fopen("db_motor/nama_motor.txt","r"))==NULL){ // Membuat directory db_motor
+                     system("mkdir db_motor");
+              }
+
+              file=fopen("db_motor/nama_motor.txt","a");
               fprintf(file,"%s\n",temp.nama);
               fclose(file);
 
-              file=fopen("plat_motor.txt","a");
+              file=fopen("db_motor/plat_motor.txt","a");
               fprintf(file,"%s\n",temp.plat);
               fclose(file);
 
-              file=fopen("cc_motor.txt","a");
+              file=fopen("db_motor/cc_motor.txt","a");
               fprintf(file,"%s\n",temp.cc);
               fclose(file);
 
-              file=fopen("tahun_motor.txt","a");
+              file=fopen("db_motor/tahun_motor.txt","a");
               fprintf(file,"%s\n",temp.tahun);
               fclose(file);
        }
