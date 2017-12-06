@@ -18,8 +18,8 @@ void Sewa(){
        printf("No. KTP/SIM     > ");scanf("%s",temp.ID);
        printf("Alamat          > ");scanf("%s",temp.alamat);
        printf("Motor           > ");scanf("%d",pilih_motor);
-       printf("Tanggal Sewa    > ");scanf("%d-%d%d", &temp.tgl_sewa.dd, &temp.tgl_sewa.mm, &temp.tgl_sewa.yyyy);
-       printf("Tanggal Kembali > ");scanf("%d-%d%d", &temp.tgl_kembali.dd, &temp.tgl_kembali.mm, &temp.tgl_kembali.yyyy);
+       printf("Tanggal Sewa    > ");scanf("%d-%d-%d", &temp.tgl_sewa.dd, &temp.tgl_sewa.mm, &temp.tgl_sewa.yyyy);
+       printf("Tanggal Kembali > ");scanf("%d-%d-%d", &temp.tgl_kembali.dd, &temp.tgl_kembali.mm, &temp.tgl_kembali.yyyy);
 
        temp.lama_sewa = lama_sewa(tgl_sewa, tgl_kembali);
        temp.biaya = harga*temp.lama_sewa;
@@ -73,7 +73,7 @@ void Sewa(){
               fclose(file);
 
               file=fopen("db_pelanggan/biaya_pelanggan.txt","a"); //8. Biaya
-              fprintf(file,"%s\n",temp.biaya);
+              fprintf(file,"%d\n",temp.biaya);
               fclose(file);
        }
        else{
@@ -363,7 +363,7 @@ void pengembalian(){
                      arrpenyewaan[j].nama,
                      arrpenyewaan[j].ID,
                      arrpenyewaan[j].alamat,
-                     arrpenyewaan[j].motor.nama
+                     arrpenyewaan[j].motor.nama,
                      arrpenyewaan[j].biaya
                      );
        }
@@ -385,7 +385,10 @@ void pengembalian(){
 
        printf("\nAnda yakin ?[y/t] > ");scanf("%c",yakin);
        if(yakin == 'y' || yakin == 'Y'){
-
+              if((file=fopen("db_pelanggan/nama_pelanggan.txt","r")) == NULL){
+                     printf("Gagal membuka file\n");
+                     fclose(file);
+              }
 
               file=fopen("db_pelanggan/nama_pelanggan.txt","r"); //1. Nama Pelanggan
               int i=0;
@@ -404,6 +407,7 @@ void pengembalian(){
                      fprintf(file,"%s\n",arrpenyewaan[j].nama);
               }
               fclose(file);
+
 
 
               file=fopen("db_pelanggan/id_pelanggan.txt","r"); //2. ID Pelanggan
@@ -425,6 +429,7 @@ void pengembalian(){
               fclose(file);
 
 
+
               file=fopen("db_pelanggan/alamat_pelanggan.txt","r"); //3. ALamat Pelanggan
               i=0;
               while(fgets(arrpenyewaan[i].alamat, 20, file)){
@@ -444,6 +449,7 @@ void pengembalian(){
               fclose(file);
 
 
+
               file=fopen("db_pelanggan/motor_pelanggan.txt","r"); //4. Nama Motor
               i=0;
               while(fgets(arrpenyewaan[i].motor.nama, 20, file)){
@@ -461,6 +467,7 @@ void pengembalian(){
                      fprintf(file,"%s\n",arrpenyewaan[j].motor.nama);
               }
               fclose(file);
+
 
 
               file=fopen("db_pelanggan/tgl_sewa_pelanggan.txt","r"); //5. Tanggal Penyewaan
@@ -487,13 +494,14 @@ void pengembalian(){
               for(j=0;j<i-2;j++){
                      fprintf(
                             file,
-                            "%d-%d-%d",
+                            "%d-%d-%d\n",
                             arrpenyewaan[j].tgl_sewa.dd,
                             arrpenyewaan[j].tgl_sewa.mm,
                             arrpenyewaan[j].tgl_sewa.yyyy
                             );
               }
               fclose(file);
+
 
 
               file=fopen("db_pelanggan/tgl_kembali_pelanggan.txt","r"); //6. Tanggal Pengembalian
@@ -520,7 +528,7 @@ void pengembalian(){
               for(j=0;j<i-2;j++){
                      fprintf(
                             file,
-                            "%d-%d-%d",
+                            "%d-%d-%d\n",
                             arrpenyewaan[j].tgl_kembali.dd,
                             arrpenyewaan[j].tgl_kembali.mm,
                             arrpenyewaan[j].tgl_kembali.yyyy
@@ -538,6 +546,16 @@ void pengembalian(){
               }
               fclose(file);
 
+              for(j = hapus-1;j<i;j++){
+                     arrpenyewaan[j].lama_sewa = arrpenyewaan[j+1].lama_sewa;
+              }
+
+              file=fopen("db_pelanggan/lama_sewa_pelanggan.txt","w");
+              for(j=0;j<i-2;j++){
+                     fprintf(file,"%d\n", arrpenyewaan[j].lama_sewa);
+              }
+              fclose(file);
+
 
 
               file=fopen("db_pelanggan/biaya_pelanggan.txt","r"); //8. Biaya
@@ -547,11 +565,103 @@ void pengembalian(){
                      i++;
               }
               fclose(file);
+
+              for(j = hapus-1;j<i;j++){
+                     arrpenyewaan[j].biaya = arrpenyewaan[j+1].biaya;
+              }
+
+              file=fopen("db_pelanggan/biaya_pelanggan.txt","w");
+              for(j=0;j<i-2;j++){
+                     fprintf(file,"%d\n", arrpenyewaan[j].biaya);
+              }
+              fclose(file);
        }
+}
+
+void edit_motor(){
+       int pilih, i, j;
+       motor temp;
+
+       tb_motor();
+       printf("\nPilih Motor Yang Akan Diedit > ");scanf("%d",pilih);
+       printf("Nama Sepeda Motor > ");scanf("%s",temp.nama);
+       printf("Plat Kendaraan    > ");scanf("%s",temp.plat);
+       printf("Kapasitas Mesin   > ");scanf("%s",temp.cc);
+       printf("Tahun Produksi    > ");scanf("%s",temp.tahun);
+
+       printf("\n\nReview Data Sepeda Motor :\n\n");
+       printf("Nama Sepeda Motor : %s\n",temp.nama);
+       printf("Plat Kendaraan    : %s\n",temp.plat);
+       printf("Kapasitas Mesin   : %s\n",temp.cc);
+       printf("Tahun Produksi    : %s\n",temp.tahun);
+       getchar();
+
+       i=0;
+       file=fopen("db_motor/nama_motor.txt","r"); //1. Edit Nama
+       while(fgets(arrmotor[i].nama, 20, file)){
+              arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+              i++;
+       }
+       fclose(file);
+
+       strcpy(arrmotor[pilih-1].nama, temp.nama);
+
+       file=fopen("db_motor/nama_motor.txt","w");
+       for(j=0;j<i;j++){
+              fprintf(file,"%s\n", arrmotor[j].nama);
+       }
+       fclose(file);
 
 
+       i=0;
+       file=fopen("db_motor/nama_motor.txt","r"); //2. Edit Plat
+       while(fgets(arrmotor[i].nama, 20, file)){
+              arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+              i++;
+       }
+       fclose(file);
+
+       strcpy(arrmotor[pilih-1].nama, temp.nama);
+
+       file=fopen("db_motor/nama_motor.txt","w");
+       for(j=0;j<i;j++){
+              fprintf(file,"%s\n", arrmotor[j].nama);
+       }
+       fclose(file);
 
 
+       i=0;
+       file=fopen("db_motor/nama_motor.txt","r"); //3. Edit CC
+       while(fgets(arrmotor[i].nama, 20, file)){
+              arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+              i++;
+       }
+       fclose(file);
+
+       strcpy(arrmotor[pilih-1].nama, temp.nama);
+
+       file=fopen("db_motor/nama_motor.txt","w");
+       for(j=0;j<i;j++){
+              fprintf(file,"%s\n", arrmotor[j].nama);
+       }
+       fclose(file);
+
+
+       i=0;
+       file=fopen("db_motor/nama_motor.txt","r"); //4. Edit Tahun
+       while(fgets(arrmotor[i].nama, 20, file)){
+              arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+              i++;
+       }
+       fclose(file);
+
+       strcpy(arrmotor[pilih-1].nama, temp.nama);
+
+       file=fopen("db_motor/nama_motor.txt","w");
+       for(j=0;j<i;j++){
+              fprintf(file,"%s\n", arrmotor[j].nama);
+       }
+       fclose(file);
 
 }
 

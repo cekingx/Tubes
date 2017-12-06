@@ -37,7 +37,7 @@ void Sewa();
 void log_Sewa();
 void pengembalian();
 void tb_motor();
-//void edit_motor();
+void edit_motor();
 //void hapus_motor();
 int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali);
 
