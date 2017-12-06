@@ -614,54 +614,142 @@ void edit_motor(){
 
 
        i=0;
-       file=fopen("db_motor/nama_motor.txt","r"); //2. Edit Plat
-       while(fgets(arrmotor[i].nama, 20, file)){
-              arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+       file=fopen("db_motor/plat_motor.txt","r"); //2. Edit Plat
+       while(fgets(arrmotor[i].plat, 20, file)){
+              arrmotor[i].plat[strlen(arrmotor[i].plat) - 1] = '\0';
               i++;
        }
        fclose(file);
 
-       strcpy(arrmotor[pilih-1].nama, temp.nama);
+       strcpy(arrmotor[pilih-1].plat, temp.plat);
 
-       file=fopen("db_motor/nama_motor.txt","w");
+       file=fopen("db_motor/plat_motor.txt","w");
        for(j=0;j<i;j++){
-              fprintf(file,"%s\n", arrmotor[j].nama);
+              fprintf(file,"%s\n", arrmotor[j].plat);
        }
        fclose(file);
 
 
        i=0;
-       file=fopen("db_motor/nama_motor.txt","r"); //3. Edit CC
-       while(fgets(arrmotor[i].nama, 20, file)){
-              arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+       file=fopen("db_motor/cc_motor.txt","r"); //3. Edit CC
+       while(fgets(arrmotor[i].cc, 20, file)){
+              arrmotor[i].cc[strlen(arrmotor[i].cc) - 1] = '\0';
               i++;
        }
        fclose(file);
 
-       strcpy(arrmotor[pilih-1].nama, temp.nama);
+       strcpy(arrmotor[pilih-1].cc, temp.cc);
 
-       file=fopen("db_motor/nama_motor.txt","w");
+       file=fopen("db_motor/cc_motor.txt","w");
        for(j=0;j<i;j++){
-              fprintf(file,"%s\n", arrmotor[j].nama);
+              fprintf(file,"%s\n", arrmotor[j].cc);
        }
        fclose(file);
 
 
        i=0;
-       file=fopen("db_motor/nama_motor.txt","r"); //4. Edit Tahun
-       while(fgets(arrmotor[i].nama, 20, file)){
-              arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+       file=fopen("db_motor/tahun_motor.txt","r"); //4. Edit Tahun
+       while(fgets(arrmotor[i].tahun, 20, file)){
+              arrmotor[i].tahun[strlen(arrmotor[i].tahun) - 1] = '\0';
               i++;
        }
        fclose(file);
 
-       strcpy(arrmotor[pilih-1].nama, temp.nama);
+       strcpy(arrmotor[pilih-1].tahun, temp.tahun);
 
-       file=fopen("db_motor/nama_motor.txt","w");
+       file=fopen("db_motor/tahun_motor.txt","w");
        for(j=0;j<i;j++){
-              fprintf(file,"%s\n", arrmotor[j].nama);
+              fprintf(file,"%s\n", arrmotor[j].tahun);
        }
        fclose(file);
+}
+
+void hapus_motor(){
+       int hapus;
+       int i,j;
+       char yakin;
+
+       tb_motor();
+       printf("Pilih Motor Yang Akan Dihapus > ");scanf("%d",&hapus);
+       printf("Anda Yakin ?[y/t] > ");scanf("%c",yakin);
+
+       if( yakin == 'y' || yakin == 'Y'){
+
+              i=0;
+              file=fopen("db_motor/nama_motor.txt","r"); //1. Hapus Nama
+              while(fgets(arrmotor[i].nama, 20, file)){
+                     arrmotor[i].nama[strlen(arrmotor[i].nama) - 1] = '\0';
+                     i++;
+              }
+              fclose(file);
+
+              for(j=hapus-1;j<i;j++){
+                     strcpy(arrmotor[j].nama, arrmotor[j+1].nama);
+              }
+
+              file=fopen("db_motor/nama_motor.txt","w");
+              for(j=0;j<i-1;j++){
+                     fprintf(file,"%s\n", arrmotor[j].nama);
+              }
+              fclose(file);
+
+
+              i=0;
+              file=fopen("db_motor/plat_motor.txt","r"); //2. Hapus Plat
+              while(fgets(arrmotor[i].plat, 20, file)){
+                     arrmotor[i].plat[strlen(arrmotor[i].plat) - 1] = '\0';
+                     i++;
+              }
+              fclose(file);
+
+              for(j=hapus-1;j<i;j++){
+                     strcpy(arrmotor[j].plat, arrmotor[j+1].plat);
+              }
+
+              file=fopen("db_motor/plat_motor.txt","w");
+              for(j=0;j<i-1;j++){
+                     fprintf(file,"%s\n", arrmotor[j].plat);
+              }
+              fclose(file);
+
+
+              i=0;
+              file=fopen("db_motor/cc_motor.txt","r"); //3. Hapus CC
+              while(fgets(arrmotor[i].cc, 20, file)){
+                     arrmotor[i].cc[strlen(arrmotor[i].cc) - 1] = '\0';
+                     i++;
+              }
+              fclose(file);
+
+              for(j=hapus-1;j<i;j++){
+                     strcpy(arrmotor[j].cc, arrmotor[j+1].cc);
+              }
+
+              file=fopen("db_motor/cc_motor.txt","w");
+              for(j=0;j<i-1;j++){
+                     fprintf(file,"%s\n", arrmotor[j].cc);
+              }
+              fclose(file);
+
+
+              i=0;
+              file=fopen("db_motor/tahun_motor.txt","r"); //4. Hapus Tahun
+              while(fgets(arrmotor[i].tahun, 20, file)){
+                     arrmotor[i].tahun[strlen(arrmotor[i].tahun) - 1] = '\0';
+                     i++;
+              }
+              fclose(file);
+
+              for(j=hapus-1;j<i;j++){
+                     strcpy(arrmotor[j].tahun, arrmotor[j+1].tahun);
+              }
+
+              file=fopen("db_motor/tahun_motor.txt","w");
+              for(j=0;j<i-1;j++){
+                     fprintf(file,"%s\n", arrmotor[j].tahun);
+              }
+              fclose(file);
+       }
 
 }
 
