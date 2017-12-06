@@ -39,18 +39,18 @@ int main(){
               fscanf(file,"%d-%d-%d", &test[i].tgl_sewa.dd, &test[i].tgl_sewa.mm, &test[i].tgl_sewa.yyyy);
               i++;
        }
-       printf("Masukkan data yang akan dihapus > ");scanf("%d",pilih);
-       while(!feof(file)){
-              test[pilih-1].tgl_sewa.dd = test[pilih].tgl_sewa.dd;
-              test[pilih-1].tgl_sewa.mm = test[pilih].tgl_sewa.mm;
-              test[pilih-1].tgl_sewa.yyyy = test[pilih].tgl_sewa.yyyy;
+       printf("Masukkan data yang akan dihapus > ");scanf("%d",&pilih);
+       for(int j = pilih-1;j<i;j++){
+              test[j].tgl_sewa.dd = test[j+1].tgl_sewa.dd;
+              test[j].tgl_sewa.mm = test[j+1].tgl_sewa.mm;
+              test[j].tgl_sewa.yyyy = test[j+1].tgl_sewa.yyyy;
        }
 
        fclose(file);
 
        file=fopen("date_test.txt","w");
        for(int j=0;j<i-2;j++){
-              fprintf(file,"%d-%d-%d", test[j].tgl_sewa.dd, test[j].tgl_sewa.mm, test[j].tgl_sewa.yyyy);
+              fprintf(file,"%d-%d-%d\n", test[j].tgl_sewa.dd, test[j].tgl_sewa.mm, test[j].tgl_sewa.yyyy);
        }
 
        for(int j=0;j<i-2;j++){

@@ -35,7 +35,7 @@ void tambah_motor();
 //void ganti_harga();
 void Sewa();
 void log_Sewa();
-//void pengembalian();
+void pengembalian();
 void tb_motor();
 //void edit_motor();
 //void hapus_motor();
