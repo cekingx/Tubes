@@ -750,7 +750,29 @@ void hapus_motor(){
               }
               fclose(file);
        }
+}
 
+void ganti_harga(){
+       int temp, harga;
+
+       if((file=fopen("harga.txt","r")) == NULL){
+              file=fopen("harga.txt","w");
+              printf("Masukkan Harga Sewa Per Hari > ");scanf("%d",&temp);
+              fprintf(file,"%d\n", temp);
+              fclose(file);
+       }
+       else{
+              file=fopen("harga.txt","r");
+              fscanf(file, "%d", &harga);
+              fclose(file);
+
+              printf("Harga Awal : %d\n", harga);
+              printf("Harga Baru > ");scanf("%d", &temp);
+
+              file=fopen("harga.txt","w");
+              fprintf(file, "%d", temp);
+              fclose(file);
+       }
 }
 
 int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali){

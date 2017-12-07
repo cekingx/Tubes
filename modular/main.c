@@ -46,7 +46,7 @@ void menu(){
                             break;
                      }
                      case 4 :{
-                            //ganti_harga(); //fungsi.c
+                            ganti_harga(); //fungsi.c
                             //getchar();
                             printf("Kembali ke menu utama? [y/t] > ");scanf("%c",&again);
                             break;

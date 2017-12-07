@@ -32,7 +32,7 @@ data_diri arrpenyewaan[50];
 motor arrmotor[50];
 
 void tambah_motor();
-//void ganti_harga();
+void ganti_harga();
 void Sewa();
 void log_Sewa();
 void pengembalian();
