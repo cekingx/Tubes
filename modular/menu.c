@@ -9,7 +9,7 @@ void penyewaan(){
        system("clear");
        do{
               system("clear");
-              //judul "Menu Penyewaan"
+              judul_menu_penyewaan();
               printf("Menu (Penyewaan) : \n");
               printf("1. Sewa baru\n");
               printf("2. Log Penyewaan\n");
@@ -86,8 +86,3 @@ void db_motor(){
        }while(again == 'y' || again == 'Y');
 }
 
-void judul(){
-       printf("\t\t\t   ========================");
-       printf("\n\t\t\t   ||PROGRAM RENTAL MOTOR||");
-       printf("\n\t\t\t   ========================\n\n");
-}

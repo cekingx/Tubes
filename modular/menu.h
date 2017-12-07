@@ -3,6 +3,5 @@
 
 void penyewaan();
 void db_motor();
-void judul();
 
 #endif

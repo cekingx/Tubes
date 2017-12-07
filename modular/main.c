@@ -17,7 +17,7 @@ void menu(){
        system("clear");
        do{
               system("clear");
-              judul();
+              judul_menu_utama();
               printf("Menu : \n");
               printf("1. Penyewaan\n");
               printf("2. Tambah Motor\n");

@@ -9,8 +9,8 @@ void Sewa(){
        data_diri temp;
        int pilih_motor, harga;
        system("clear");
+       judul_sewa();
        tanggal tgl_sewa, tgl_kembali;
-       //judul "Penyewaan"
 
        tb_motor();
        printf("\n\nData Diri Pelanggan : \n\n");
@@ -83,6 +83,7 @@ void Sewa(){
 
 void log_Sewa(){
        system("clear");
+       judul_log_sewa();
        char detail_log;
 
        file=fopen("db_pelanggan/nama_pelanggan.txt","r"); //1. Nama Pelanggan
@@ -169,6 +170,8 @@ void log_Sewa(){
        getchar();
        printf("Ingin Melihat Detail ?[y/t] > ");scanf("%c",detail_log);
        if ( detail_log == 'y' || detail_log == 'Y' ){
+              system("clear");
+              judul_detail_log_sewa();
               printf("+---+----------------------+----------------------+----------------------+----------------------+\n");
               printf("| No|    Nama Penyewa      |          ID          |        Alamat        |      Nama Motor      |\n");
               printf("+---+----------------------+----------------------+----------------------+----------------------+\n");
@@ -187,6 +190,8 @@ void log_Sewa(){
 }
 
 void tb_motor(){
+       system("clear");
+       judul_tabel_motor();
        int i=0;
        file=fopen("nama_motor.txt","r");
        while(fgets(arrmotor[i].nama,20,file)){
@@ -239,7 +244,7 @@ void tambah_motor(){
        char pilih;
        motor temp;
        system("clear");
-       //judul "Tambah Motor"
+       judul_tambah_motor();
 
        printf("\n\nTambah Sepeda Motor : \n");
        printf("Nama Sepeda Motor > ");scanf("%s",temp.nama);
@@ -250,7 +255,7 @@ void tambah_motor(){
        printf("\n\nReview Data Sepeda Motor :\n\n");
        printf("Nama Sepeda Motor : %s\n",temp.nama);
        printf("Plat Kendaraan    : %s\n",temp.plat);
-       printf("Kapasitas Mesin   : %s\n",temp.cc);
+       printf("Kapasitas Mesin   : %s cc\n",temp.cc);
        printf("Tahun Produksi    : %s\n",temp.tahun);
        getchar();
 
@@ -284,6 +289,7 @@ void tambah_motor(){
 
 void pengembalian(){
        system("clear");
+       judul_pengembalian();
        int hapus,j;
        char yakin;
 
@@ -579,6 +585,8 @@ void pengembalian(){
 }
 
 void edit_motor(){
+       system("clear");
+       judul_edit_motor();
        int pilih, i, j;
        motor temp;
 
@@ -668,6 +676,8 @@ void hapus_motor(){
        int hapus;
        int i,j;
        char yakin;
+       system("clear");
+       judul_hapus_motor();
 
        tb_motor();
        printf("Pilih Motor Yang Akan Dihapus > ");scanf("%d",&hapus);
@@ -754,6 +764,8 @@ void hapus_motor(){
 
 void ganti_harga(){
        int temp, harga;
+       system("clear");
+       judul_ganti_harga();
 
        if((file=fopen("harga.txt","r")) == NULL){
               file=fopen("harga.txt","w");
@@ -804,4 +816,131 @@ int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali){
        return total;
 }
 
+void judul_menu_utama(){
+       printf("                                       ______           _        _  ___  ___      _             \n");
+       printf("                                       | ___ \\         | |      | | |  \\/  |     | |            \n");
+       printf("                                       | |_/ /___ _ __ | |_ __ _| | | .  . | ___ | |_ ___  _ __ \n");
+       printf("                                       |    // _ \\ '_ \\| __/ _` | | | |\\/| |/ _ \\| __/ _ \\| '__|\n");
+       printf("                                       | |\\ \\  __/ | | | || (_| | | | |  | | (_) | || (_) | |   \n");
+       printf("                                       \\_| \\_\\___|_| |_|\\__\\__,_|_| \\_|  |_/\\___/ \\__\\___/|_|   \n");
+       printf("                                                                                                \n");
+}
+
+void judul_menu_penyewaan(){
+       printf("                                   ___  ___                  ______\n");
+       printf("                                   |  \\/  |                  | ___ \\\n");
+       printf("                                   | .  . | ___ _ __  _   _  | |_/ /__ _ __  _   _  _____      ____ _  __ _ _ __\n");
+       printf("                                   | |\\/| |/ _ \\ '_ \\| | | | |  __/ _ \\ '_ \\| | | |/ _ \\ \\ /\\ / / _` |/ _` | '_ \\\n");
+       printf("                                   | |  | |  __/ | | | |_| | | | |  __/ | | | |_| |  __/\\ V  V / (_| | (_| | | | |\n");
+       printf("                                   \\_|  |_/\\___|_| |_|\\__,_| \\_|  \\___|_| |_|\\__, |\\___| \\_/\\_/ \\__,_|\\__,_|_| |_|\n");
+       printf("                                                                              __/ |\n");
+       printf("                                                                             |___/\n");
+       printf("\n");
+}
+
+void judul_database_motor(){
+       printf("                                          ______      _        _                     ___  ___      _\n");
+       printf("                                          |  _  \\    | |      | |                    |  \\/  |     | |\n");
+       printf("                                          | | | |__ _| |_ __ _| |__   __ _ ___  ___  | .  . | ___ | |_ ___  _ __\n");
+       printf("                                          | | | / _` | __/ _` | '_ \\ / _` / __|/ _ \\ | |\\/| |/ _ \\| __/ _ \\| '__|\n");
+       printf("                                          | |/ / (_| | || (_| | |_) | (_| \\__ \\  __/ | |  | | (_) | || (_) | |\n");
+       printf("                                          |___/ \\__,_|\\__\\__,_|_.__/ \\__,_|___/\\___| \\_|  |_/\\___/ \\__\\___/|_|\n");
+       printf("\n");
+}
+
+void judul_sewa(){
+       printf("                                             _____                     ___  ___      _\n");
+       printf("                                            /  ___|                    |  \\/  |     | |\n");
+       printf("                                            \\ `--.  _____      ____ _  | .  . | ___ | |_ ___  _ __\n");
+       printf("                                             `--. \\/ _ \\ \\ /\\ / / _` | | |\\/| |/ _ \\| __/ _ \\| '__|\n");
+       printf("                                            /\\__/ /  __/\\ V  V / (_| | | |  | | (_) | || (_) | |\n");
+       printf("                                            \\____/ \\___| \\_/\\_/ \\__,_| \\_|  |_/\\___/ \\__\\___/|_|\n");
+       printf("\n");
+}
+
+void judul_log_sewa(){
+       printf("                                       _____     _          _   _____\n");
+       printf("                                      |_   _|   | |        | | /  ___|\n");
+       printf("                                        | | __ _| |__   ___| | \\ `--.  _____      ____ _\n");
+       printf("                                        | |/ _` | '_ \\ / _ \\ |  `--. \\/ _ \\ \\ /\\ / / _` |\n");
+       printf("                                        | | (_| | |_) |  __/ | /\\__/ /  __/\\ V  V / (_| |\n");
+       printf("                                        \\_/\\__,_|_.__/ \\___|_| \\____/ \\___| \\_/\\_/ \\__,_|\n");
+       printf("\n");
+}
+
+void judul_detail_log_sewa(){
+       printf("                                  _____     _          _  ______     _        _ _   _____\n");
+       printf("                                 |_   _|   | |        | | |  _  \\   | |      (_) | /  ___|\n");
+       printf("                                   | | __ _| |__   ___| | | | | |___| |_ __ _ _| | \\ `--.  _____      ____ _\n");
+       printf("                                   | |/ _` | '_ \\ / _ \\ | | | | / _ \\ __/ _` | | |  `--. \\/ _ \\ \\ /\\ / / _` |\n");
+       printf("                                   | | (_| | |_) |  __/ | | |/ /  __/ || (_| | | | /\\__/ /  __/\\ V  V / (_| |\n");
+       printf("                                   \\_/\\__,_|_.__/ \\___|_| |___/ \\___|\\__\\__,_|_|_| \\____/ \\___| \\_/\\_/ \\__,_|\n");
+       printf("\n");
+}
+
+void judul_tabel_motor(){
+       printf("                                           _____     _          _  ___  ___      _\n");
+       printf("                                          |_   _|   | |        | | |  \\/  |     | |\n");
+       printf("                                            | | __ _| |__   ___| | | .  . | ___ | |_ ___  _ __\n");
+       printf("                                            | |/ _` | '_ \\ / _ \\ | | |\\/| |/ _ \\| __/ _ \\| '__|\n");
+       printf("                                            | | (_| | |_) |  __/ | | |  | | (_) | || (_) | |\n");
+       printf("                                            \\_/\\__,_|_.__/ \\___|_| \\_|  |_/\\___/ \\__\\___/|_|\n");
+       printf("\n");
+}
+
+void judul_tambah_motor(){
+       printf("                                  _____               _           _      ___  ___      _\n");
+       printf("                                 |_   _|             | |         | |     |  \\/  |     | |\n");
+       printf("                                   | | __ _ _ __ ___ | |__   __ _| |__   | .  . | ___ | |_ ___  _ __\n");
+       printf("                                   | |/ _` | '_ ` _ \\| '_ \\ / _` | '_ \\  | |\\/| |/ _ \\| __/ _ \\| '__|\n");
+       printf("                                   | | (_| | | | | | | |_) | (_| | | | | | |  | | (_) | || (_) | |\n");
+       printf("                                   \\_/\\__,_|_| |_| |_|_.__/ \\__,_|_| |_| \\_|  |_/\\___/ \\__\\___/|_|\n");
+       printf("\n");
+}
+
+void judul_pengembalian(){
+       printf("                                     ______                               _           _ _\n");
+       printf("                                     | ___ \\                             | |         | (_)\n");
+       printf("                                     | |_/ /__ _ __   __ _  ___ _ __ ___ | |__   __ _| |_  __ _ _ __\n");
+       printf("                                     |  __/ _ \\ '_ \\ / _` |/ _ \\ '_ ` _ \\| '_ \\ / _` | | |/ _` | '_ \\\n");
+       printf("                                     | | |  __/ | | | (_| |  __/ | | | | | |_) | (_| | | | (_| | | | |\n");
+       printf("                                     \\_|  \\___|_| |_|\\__, |\\___|_| |_| |_|_.__/ \\__,_|_|_|\\__,_|_| |_|\n");
+       printf("                                                      __/ |\n");
+       printf("                                                     |___/\n");
+       printf("\n");
+}
+
+void judul_edit_motor(){
+       printf("                                              _____    _ _ _    ___  ___      _\n");
+       printf("                                             |  ___|  | (_) |   |  \\/  |     | |\n");
+       printf("                                             | |__  __| |_| |_  | .  . | ___ | |_ ___  _ __\n");
+       printf("                                             |  __|/ _` | | __| | |\\/| |/ _ \\| __/ _ \\| '__|\n");
+       printf("                                             | |__| (_| | | |_  | |  | | (_) | || (_) | |\n");
+       printf("                                             \\____/\\__,_|_|\\__| \\_|  |_/\\___/ \\__\\___/|_|\n");
+       printf("\n");
+}
+
+void judul_hapus_motor(){
+       printf("                                            _   _                        ___  ___      _\n");
+       printf("                                           | | | |                       |  \\/  |     | |\n");
+       printf("                                           | |_| | __ _ _ __  _   _ ___  | .  . | ___ | |_ ___  _ __\n");
+       printf("                                           |  _  |/ _` | '_ \\| | | / __| | |\\/| |/ _ \\| __/ _ \\| '__|\n");
+       printf("                                           | | | | (_| | |_) | |_| \\__ \\ | |  | | (_) | || (_) | |\n");
+       printf("                                           \\_| |_/\\__,_| .__/ \\__,_|___/ \\_|  |_/\\___/ \\__\\___/|_|\n");
+       printf("                                                       | |\n");
+       printf("                                                       |_|\n");
+       printf("\n");
+}
+
+void judul_ganti_harga(){
+       printf("                                              _____             _   _   _   _\n");
+       printf("                                             |  __ \\           | | (_) | | | |\n");
+       printf("                                             | |  \\/ __ _ _ __ | |_ _  | |_| | __ _ _ __ __ _  __ _\n");
+       printf("                                             | | __ / _` | '_ \\| __| | |  _  |/ _` | '__/ _` |/ _` |\n");
+       printf("                                             | |_\\ \\ (_| | | | | |_| | | | | | (_| | | | (_| | (_| |\n");
+       printf("                                              \\____/\\__,_|_| |_|\\__|_| \\_| |_/\\__,_|_|  \\__, |\\__,_|\n");
+       printf("                                                                                         __/ |\n");
+       printf("                                                                                        |___/\n");
+       printf("\n");
+}
 
