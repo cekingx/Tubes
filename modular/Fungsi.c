@@ -10,7 +10,6 @@ void Sewa(){
        int pilih_motor, harga;
        system("clear");
        judul_sewa();
-       //tanggal tgl_sewa, tgl_kembali;
 
        tb_motor();
        printf("\n\nData Diri Pelanggan : \n\n");
@@ -21,6 +20,16 @@ void Sewa(){
        printf("Tanggal Sewa    > ");scanf("%d-%d-%d", &temp.tgl_sewa.dd, &temp.tgl_sewa.mm, &temp.tgl_sewa.yyyy);
        printf("Tanggal Kembali > ");scanf("%d-%d-%d", &temp.tgl_kembali.dd, &temp.tgl_kembali.mm, &temp.tgl_kembali.yyyy);
 
+       if((file=fopen("harga.txt","r")) == NULL){
+              printf("Harga Belum Ditetapkan\n");
+              file=fopen("harga.txt","w");
+              printf("Masukkan Harga Sewa Per Hari > ");scanf("%d",&harga);
+              fprintf(file,"%d\n", harga);
+              fclose(file);
+       }
+       file=fopen("harga.txt","r");
+       fscanf(file,"%d",&harga);
+       fclose(file);
        temp.lama_sewa = lama_sewa(temp.tgl_sewa, temp.tgl_kembali);
        temp.biaya = harga*temp.lama_sewa;
        strcpy(temp.motor.nama, arrmotor[pilih_motor-1].nama);
@@ -153,9 +162,9 @@ void log_Sewa(){
        printf("+---+----------------------+--------------+-----------------+-----------+------------+\n");
        printf("| No|    Nama Penyewa      | Tanggal Sewa | Tanggal Kembali | Lama Sewa |    Biaya   |\n");
        printf("+---+----------------------+--------------+-----------------+-----------+------------+\n");
-       for(int j=0;j<i;j++){
+       for(int j=0;j<i-1;j++){
               printf(
-                     "|%3d| %20s |   %2d-%2d-%4d |      %2d-%2d-%4d | %3d Hari | Rp %7d |\n",
+                     "|%3d| %20s |   %2d-%2d-%4d |      %2d-%2d-%4d | %4d Hari | Rp %7d |\n",
                      j+1,
                      arrpenyewaan[j].nama,
                      arrpenyewaan[j].tgl_sewa.dd, arrpenyewaan[j].tgl_sewa.mm, arrpenyewaan[j].tgl_sewa.yyyy,
@@ -189,8 +198,10 @@ void log_Sewa(){
 }
 
 void tb_motor(){
+       int tahun[25], cc[25];
+       int i,j;
 
-       int i=0;
+       i=0;
        file=fopen("db_motor/nama_motor.txt","r");
        while(fgets(arrmotor[i].nama,20,file)){
               arrmotor[i].nama[strlen(arrmotor[i].nama) -1 ] = '\0';
@@ -200,7 +211,7 @@ void tb_motor(){
 
        i=0;
        file=fopen("db_motor/plat_motor.txt","r");
-       while(fgets(arrmotor[i].plat,15,file)){
+       while(fgets(arrmotor[i].plat,12,file)){
               arrmotor[i].plat[strlen(arrmotor[i].plat) -1 ] = '\0';
               i++;
        }
@@ -208,34 +219,43 @@ void tb_motor(){
 
        i=0;
        file=fopen("db_motor/cc_motor.txt","r");
-       while(fgets(arrmotor[i].cc,5,file)){
-              arrmotor[i].cc[strlen(arrmotor[i].cc) -1 ] = '\0';
+       while(!feof(file)){
+              fscanf(file,"%d",&cc[i]);
               i++;
        }
        fclose(file);
 
        i=0;
        file=fopen("db_motor/tahun_motor.txt","r");
-       while(fgets(arrmotor[i].tahun,5,file)){
-              arrmotor[i].tahun[strlen(arrmotor[i].tahun) -1 ] = '\0';
+       while(!feof(file)){
+              fscanf(file,"%d",&tahun[i]);
               i++;
        }
        fclose(file);
 
+       /*while(fgets(arrmotor[i].tahun,6,file)){
+              arrmotor[i].tahun[strlen(arrmotor[i].tahun) -1 ] = '\0';
+              i++;
+       }
+       fclose(file);
+       fflush(stdin);*/
+
        printf("+---+----------------------+-----------------+-------+-------+\n");
        printf("| No|      Nama Motor      |       Plat      |  CC   | Tahun |\n");
        printf("+---+----------------------+-----------------+-------+-------+\n");
-       for(int j=0;j<i;j++){
+       for(j=0;j<i-1;j++){
               printf(
-                     "|%3d| %20s | %15s | %5s | %5s |\n",
+                     "|%3d| %20s | %15s | %5d | %5d |\n",
                      j+1,
                      arrmotor[j].nama,
                      arrmotor[j].plat,
-                     arrmotor[j].cc,
-                     arrmotor[j].tahun
+                     cc[j],
+                     tahun[j]
+                     //arrmotor[j].tahun
                      );
        }
        printf("+---+----------------------+-----------------+-------+-------+\n");
+       //printf("%s",arrmotor[1].plat);
 }
 
 void tambah_motor(){
@@ -359,11 +379,10 @@ void pengembalian(){
        printf("+---+----------------------+----------------------+----------------------+----------------------+------------+\n");
        printf("| No|    Nama Penyewa      |          ID          |        Alamat        |      Nama Motor      |    Biaya   |\n");
        printf("+---+----------------------+----------------------+----------------------+----------------------+------------+\n");
-       for(j=0;j<i;j++){
+       for(j=0;j<i-1;j++){
               printf(
                      "|%3d| %20s | %20s | %20s | %20s | Rp %7d |\n",
                      j+1,
-                     arrpenyewaan[j].nama,
                      arrpenyewaan[j].nama,
                      arrpenyewaan[j].ID,
                      arrpenyewaan[j].alamat,
@@ -371,8 +390,7 @@ void pengembalian(){
                      arrpenyewaan[j].biaya
                      );
        }
-       printf("+---+----------------------+--------------+-----------------+-----------+------------+\n\n");
-
+       printf("+---+----------------------+----------------------+----------------------+----------------------+------------+\n");
        getchar();
        printf("Pilih nomor dari penyewa yang melakukan pengembalian > ");scanf("%d", &hapus);
 

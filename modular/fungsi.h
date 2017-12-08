@@ -29,7 +29,7 @@ typedef struct{
 
 FILE *file;
 data_diri arrpenyewaan[50];
-motor arrmotor[50];
+motor arrmotor[25];
 
 void tambah_motor();
 void ganti_harga();
