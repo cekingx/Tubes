@@ -26,15 +26,15 @@ void penyewaan(){
                             break;
                      }
                      case 2 :{
-                            getchar();
                             log_Sewa(); //fungsi.c
+                            getchar();
                             printf("Kembali ke menu penyewaan?[y/t] > ");scanf("%c",&again);
                             //loading();
                             break;
                      }
                      case 3 :{
-                            getchar();
                             pengembalian();// fungsi.c
+                            getchar();
                             printf("Kembali ke menu penyewaan?[y/t] > ");scanf("%c",&again);
                             //loading();
                             break;
@@ -55,7 +55,7 @@ void db_motor(){
        system("clear");
        do{
               system("clear");
-              //judul "Database Sepeda Motor"
+              judul_database_motor();
               printf("Menu ( Database Sepeda Motor ) : \n");
               printf("1. Edit Motor\n");
               printf("2. Hapus Motor\n");
@@ -66,13 +66,14 @@ void db_motor(){
                      case 1 :{
                             edit_motor(); //fungsi.c
                             getchar();
-                            printf("Kembali ke menu Database Sepeda Motor?[y/t] > ");scanf("%c",&again);
+                            printf("\nKembali ke menu Database Sepeda Motor?[y/t] > ");scanf("%c",&again);
                             //loading();
                             break;
                      }
                      case 2 :{
                             hapus_motor(); //fungsi.c
-                            printf("Kembali ke menu Database Sepeda Motor?[y/t] > ");scanf("%c",&again);
+                            getchar();
+                            printf("\nKembali ke menu Database Sepeda Motor?[y/t] > ");scanf("%c",&again);
                             //loading();
                             break;
                      }
@@ -85,4 +86,3 @@ void db_motor(){
               }
        }while(again == 'y' || again == 'Y');
 }
-

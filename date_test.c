@@ -26,14 +26,14 @@ typedef struct{
 data_diri test[10];
 FILE *file;
 
-//int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali);
+int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali);
 
 int main(){
        int i=0;
 
-       /*printf("Gunakan (-) sebagai pemisah, contoh 13-7-1999\n");
-       printf("Tanggal sewa    > ");scanf("%d-%d-%d", &test.tgl_sewa.dd, &test.tgl_sewa.mm, &test.tgl_sewa.yyyy);*/
-       file=fopen("date_test.txt","r");
+       printf("Gunakan (-) sebagai pemisah, contoh 13-7-1999\n");
+       printf("Tanggal sewa    > ");scanf("%d-%d-%d", &test.tgl_sewa.dd, &test.tgl_sewa.mm, &test.tgl_sewa.yyyy);
+       /*file=fopen("date_test.txt","r");
        while(!feof(file)){
               fscanf(file,"%d-%d-%d", &test[i].tgl_sewa.dd, &test[i].tgl_sewa.mm, &test[i].tgl_sewa.yyyy);
               i++;
@@ -43,22 +43,22 @@ int main(){
               printf("%d-%d-%d\n", test[j].tgl_sewa.dd, test[j].tgl_sewa.mm, test[j].tgl_sewa.yyyy);
        }
 
-       fclose(file);
+       fclose(file);*/
 
 
 
 
-       /*int temp;
+       int temp;
        tanggal tgl_sewa, tgl_kembali;
 
        printf("Gunakan (spasi) sebagai pemisah, contoh 13 7 1999\n");
        printf("Tanggal sewa    > ");scanf("%d %d %d", &test.tgl_sewa.dd, &test.tgl_sewa.mm, &test.tgl_sewa.yyyy);
        printf("Tanggal kembali > ");scanf("%d %d %d", &test.tgl_kembali.dd, &test.tgl_kembali.mm, &test.tgl_kembali.yyyy);
        temp = lama_sewa(test.tgl_sewa, test.tgl_kembali);
-       printf("Lama sewa adalah %d hari\n",temp);*/
+       printf("Lama sewa adalah %d hari\n",temp);
 }
 
-/*int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali){
+int lama_sewa(tanggal tgl_sewa, tanggal tgl_kembali){
        int total1, total2, total;
        int bln1 = 0, bln2 = 0;
        int bln[]={31,28,31,30,31,30,31,31,30,31,30,31};
@@ -85,4 +85,4 @@ int main(){
 
        total=((tgl_kembali.yyyy-tgl_sewa.yyyy)*365)+(total2-total1);
        return total;
-}*/
+}
